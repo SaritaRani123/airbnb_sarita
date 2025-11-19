@@ -1,0 +1,24 @@
+<h1>{{title}}</h1>
+
+<a href="/">Back to Home</a>
+
+<form action="/deleteProperty" method="POST" style="max-width:400px; margin-top:20px;">
+  <div style="margin-bottom:15px;">
+    <label for="property_id"><strong>Enter Property ID to Delete:</strong></label><br>
+    <input type="text" id="property_id" name="property_id" required>
+  </div>
+
+  <button type="submit" style="padding:6px 12px;">Delete Property</button>
+</form>
+
+{{#if errors}}
+  <ul style="color:red; margin-top:15px;">
+    {{#each errors}}
+      <li>{{this.msg}}</li>
+    {{/each}}
+  </ul>
+{{/if}}
+
+{{#if message}}
+  <p style="color:green; margin-top:20px;">{{message}}</p>
+{{/if}}

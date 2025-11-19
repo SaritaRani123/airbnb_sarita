@@ -1,0 +1,32 @@
+<a href="/">Go Back Home</a>
+<a href="/allData">View All Data</a>
+
+<h1>{{title}}</h1>
+
+<form action="/add" method="POST" style="max-width:400px;">
+  <label>Property ID:</label>
+  <input type="text" name="id" value="{{data.id}}" required><br><br>
+
+  <label>Title:</label>
+  <input type="text" name="NAME" value="{{data.NAME}}" required><br><br>
+  
+  <label>Price:</label>
+  <input type="number" name="price" value="{{data.price}}" step="0.01" required><br><br>
+
+  <label>Property Type:</label>
+  <input type="text" name="property_type" value="{{data.property_type}}"><br><br>
+
+  <label>Host Name:</label>
+  <input type="text" name="host_name" value="{{data.host_name}}"><br>
+
+  <br><br>
+  <button type="submit">Add Property</button>
+</form>
+
+{{#if errors}}
+  <ul style="color:red;">
+    {{#each errors}}
+      <li>{{this.msg}}</li>
+    {{/each}}
+  </ul>
+{{/if}}

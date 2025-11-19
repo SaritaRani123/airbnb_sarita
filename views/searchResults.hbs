@@ -1,0 +1,12 @@
+<a href="/">Go Back Home</a>
+<h1>{{title}}</h1>
+
+{{#each data}}
+  <div style="border:1px solid #ccc; padding:15px; margin-bottom:20px;">
+    <h2>{{{nameOrNA NAME}}}</h2>
+    <p><strong>ID:</strong> {{id}}</p>
+    <p><strong>Host Name:</strong> {{get this "host_name"}}</p>
+    <p><strong>Price:</strong> {{price}}</p>
+    <a href="/allData/{{_id}}">View Details</a>
+  </div>
+{{/each}}

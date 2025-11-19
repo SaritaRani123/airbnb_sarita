@@ -1,0 +1,40 @@
+<a href="/">Go Back Home</a>
+{{!-- <a href="/priceFilter">Filter by Price</a> --}}
+<h1>{{title}}</h1>
+
+<table border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; width: auto; margin-top: 20px;">
+  <thead style="background-color: #5e6061; color: white;">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Host Name</th>
+      <th>Neighbourhood</th>
+      <th>Price</th>
+      <th>Room Type</th>
+      <th>Thumbnail</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each data}}
+      <tr>
+        <td>{{id}}</td>
+        <td>{{{nameOrNA NAME}}}</td>
+        <td>{{get this "host_name"}}</td>
+        <td>{{neighbourhood}}</td>
+        <td>{{price}}</td>
+        <td>{{get this "room_type"}}</td>
+        <td>
+          {{#if thumbnail}}
+            <img src="{{thumbnail}}" width="100" alt="Thumbnail">
+          {{else}}
+            N/A
+          {{/if}}
+        </td>
+        <td>
+          <a href="/allData/{{_id}}">View Details</a>
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

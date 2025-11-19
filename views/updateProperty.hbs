@@ -1,0 +1,35 @@
+<a href="/">Back to Home</a>
+<h1>{{title}}</h1>
+
+{{#if success}}
+  <p style="color: green; font-weight:bold; margin-bottom:15px;">
+    {{success}}
+  </p>
+{{/if}}
+
+<form action="/updateProperty" method="POST" style="max-width:400px; margin-top:20px;">
+  <div style="margin-bottom:10px;">
+    <label for="id"><strong>Property ID:</strong></label><br>
+    <input type="text" id="id" name="id" value="{{data.id}}" required>
+  </div>
+
+  <div style="margin-bottom:10px;">
+    <label for="NAME"><strong>Title:</strong></label><br>
+    <input type="text" id="NAME" name="NAME" value="{{data.NAME}}">
+  </div>
+
+  <div style="margin-bottom:10px;">
+    <label for="price"><strong>Price:</strong></label><br>
+    <input type="number" id="price" name="price" value="{{data.price}}" step="0.01" required>
+  </div>
+
+  <button type="submit">Update</button>
+</form>
+
+{{#if errors}}
+  <ul style="color:red; margin-top:15px;">
+    {{#each errors}}
+      <li>{{this.msg}}</li>
+    {{/each}}
+  </ul>
+{{/if}}

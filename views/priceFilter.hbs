@@ -1,0 +1,66 @@
+<a href="/">Go Back Home</a>
+<h1>{{title}}</h1>
+
+<form action="/priceFilter" method="POST" style="max-width:400px; margin-top:20px;">
+  <div style="margin-bottom:15px;">
+    <label for="minPrice"><strong>Minimum Price ($):</strong></label><br>
+    <input type="number" name="minPrice" id="minPrice" step="0.01" min="0" value="{{minPrice}}" required>
+  </div>
+  <div style="margin-bottom:15px;">
+    <label for="maxPrice"><strong>Maximum Price ($):</strong></label><br>
+    <input type="number" name="maxPrice" id="maxPrice" step="0.01" min="0" value="{{maxPrice}}" required>
+  </div>
+  <button type="submit">Filter</button>
+</form>
+
+{{#if errors}}
+  <ul style="color:red; margin-top:15px;">
+    {{#each errors}}
+      <li>{{this.msg}}</li>
+    {{/each}}
+  </ul>
+{{/if}}
+
+{{#if data}}
+  {{#if data.length}}
+    <h2 style="margin-top:20px;">Filtered Properties</h2>
+    <table border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; width: auto; margin-top: 10px;">
+      <thead style="background-color: #5e6061; color: white;">
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Host Name</th>
+          <th>Neighbourhood</th>
+          <th>Price</th>
+          <th>Room Type</th>
+          <th>Thumbnail</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each data}}
+          <tr>
+            <td>{{_id}}</td>
+            <td>{{{nameOrNA NAME}}}</td>
+            <td>{{get this "host_name"}}</td>
+            <td>{{neighbourhood}}</td>
+            <td>{{price}}</td>
+            <td>{{get this "room_type"}}</td>
+            <td>
+              {{#if thumbnail}}
+                <img src="{{thumbnail}}" width="100" alt="Thumbnail">
+              {{else}}
+                N/A
+              {{/if}}
+            </td>
+            <td>
+              <a href="/allData/{{_id}}">View Details</a>
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  {{else}}
+    <p style="margin-top:20px;">No properties found in this price range.</p>
+  {{/if}}
+{{/if}}
