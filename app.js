@@ -179,25 +179,33 @@ app.post('/add',
     body('id').notEmpty().withMessage('Property ID is required'),
     body('NAME').notEmpty().withMessage('Name is required'),
     body('price').notEmpty().isNumeric().withMessage('Price must be numeric')
+    
   ],
   async (req, res, next) => {
+
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.render('addProperty', { 
-        errors: errors.array(), 
+        errors: errors.array(),
+        success: null,
         title: 'Add New Property', 
         data: req.body 
       });
     }
 
     try {
-      // Convert price to float
       req.body.price = parseFloat(req.body.price);
 
-      // Save new listing
       await Listing.create(req.body);
 
-      res.redirect('/allData');
+      // Show success message 
+      res.render('addProperty', {
+        title: 'Add New Property',
+        data: {},        // empty form after success
+        errors: null,
+        success: 'Property added successfully!'
+      });
+
     } catch (err) {
       next(err);
     }
