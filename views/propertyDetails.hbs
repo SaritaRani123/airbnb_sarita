@@ -9,30 +9,30 @@
   <h2>{{nameOrNA data.NAME}}</h2>
 
   <p><strong>ID:</strong> {{data.id}}</p>
-  <p><strong>Host ID:</strong> {{data.host_id}}</p>
-  <p><strong>Host Name:</strong> {{data.host_name}}</p>
+  <p><strong>Host ID:</strong> {{get data "host id"}}</p>
+  <p><strong>Host Name:</strong> {{get data "host name"}}</p>
   <p><strong>Host Verified:</strong> {{data.host_identity_verified}}</p>
 
-  <p><strong>Neighbourhood Group:</strong> {{data.neighbourhood_group}}</p>
+  <p><strong>Neighbourhood Group:</strong> {{get data "neighbourhood group"}}</p>
   <p><strong>Neighbourhood:</strong> {{data.neighbourhood}}</p>
 
   <p><strong>Country:</strong> {{data.country}} ({{data.country_code}})</p>
 
-  <p><strong>Room Type:</strong> {{data.room_type}}</p>
+  <p><strong>Room Type:</strong> {{get data "room type"}}</p>
 
-  <p><strong>Construction Year:</strong> {{data.construction_year}}</p>
+  <p><strong>Construction Year:</strong> {{get data "Construction year"}}</p>
 
   <p><strong>Price:</strong> {{data.price}}</p>
-  <p><strong>Service Fee:</strong> {{data.service_fee}}</p>
+  <p><strong>Service Fee:</strong> {{get data "service fee"}}</p>
 
-  <p><strong>Minimum Nights:</strong> {{data.minimum_nights}}</p>
-  <p><strong>Number of Reviews:</strong> {{data.number_of_reviews}}</p>
-  <p><strong>Last Review:</strong> {{data.last_review}}</p>
-  <p><strong>Reviews per Month:</strong> {{data.reviews_per_month}}</p>
-  <p><strong>Review Rating:</strong> {{data.review_rate_number}}</p>
+  <p><strong>Minimum Nights:</strong> {{get data "minimum nights"}}</p>
+  <p><strong>Number of Reviews:</strong> {{get data "number of reviews"}}</p>
+  <p><strong>Last Review:</strong> {{get data "last review"}}</p>
+  <p><strong>Reviews per Month:</strong> {{get data "reviews per month"}}</p>
+  <p><strong>Review Rating:</strong> {{get data "review rate number"}}</p>
 
-  <p><strong>Listings Count:</strong> {{data.calculated_host_listings_count}}</p>
-  <p><strong>Availability 365:</strong> {{data.availability_365}}</p>
+  <p><strong>Listings Count:</strong> {{get data "calculated host listings count"}}</p>
+  <p><strong>Availability 365:</strong> {{get data "availability 365"}}</p>
 
   <p><strong>House Rules:</strong> {{data.house_rules}}</p>
   <p><strong>License:</strong> {{data.license}}</p>

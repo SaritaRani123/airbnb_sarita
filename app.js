@@ -18,7 +18,8 @@ const config = require("./config/database");
 const Listing = require("./models/Listing");
 
 const app = express();
-const port = process.env.PORT || config.port || 3000;
+// const port = process.env.PORT || config.port || 3000;
+const port = process.env.PORT || 3000;
 
 // ---------------- HANDLEBARS SETUP ----------------
 const hbs = exphbs.create({
@@ -68,18 +69,21 @@ app.get('/', (req, res) => {
   res.render('index', { title: 'Airbnb Dashboard' });
 });
 
-// All Data
+// All Data (limited to 100 for performance)
 app.get('/allData', async (req, res, next) => {
   try {
-    const data = await Listing.find().lean();
+    const data = await Listing.find().limit(100).lean();
     res.render('allData', { title: 'All Airbnb Properties', data });
-  } catch (err) { next(err); }
+  } catch (err) {
+    next(err);
+  }
 });
 
-// View Data in table 
+
+// View Data in table limited to 100 for performance
 app.get('/viewData', async (req, res, next) => {
   try {
-    const data = await Listing.find().lean(); // fetch all listings
+    const data = await Listing.find().limit(100).lean(); // fetch all listings
     res.render('viewData', { title: 'All Airbnb Listings', data });
   } catch (err) {
     next(err);
@@ -389,3 +393,5 @@ app.use((req, res) => res.render('error', { title: 'Error', message: 'Wrong Rout
 
 // ---------------- START SERVER ----------------
 app.listen(port, () => console.log(`Server running at http://localhost:${port}`));
+
+// app.listen(port, () => console.log(`Server running on port ${port}`));

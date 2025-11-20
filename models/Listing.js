@@ -40,6 +40,6 @@ const ListingSchema = new mongoose.Schema({
   property_type: String,
   thumbnail: String,
   images: [String]
-}, { timestamps: true });
+}, { timestamps: true, collection: 'airbnb'  });
 
 module.exports = mongoose.model('Listing', ListingSchema);

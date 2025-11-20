@@ -1,5 +1,4 @@
 <a href="/">Go Back Home</a>
-{{!-- <a href="/priceFilter">Filter by Price</a> --}}
 <h1>{{title}}</h1>
 
 <table border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; width: auto; margin-top: 20px;">
@@ -18,15 +17,15 @@
   <tbody>
     {{#each data}}
       <tr>
-        <td>{{id}}</td>
-        <td>{{{nameOrNA NAME}}}</td>
-        <td>{{get this "host_name"}}</td>
-        <td>{{neighbourhood}}</td>
-        <td>{{price}}</td>
-        <td>{{get this "room_type"}}</td>
+        <td>{{get this "id"}}</td>
+        <td>{{{nameOrNA (get this "NAME")}}}</td>
+        <td>{{get this "host name"}}</td>
+        <td>{{get this "neighbourhood"}}</td>
+        <td>{{get this "price"}}</td>
+        <td>{{get this "room type"}}</td>
         <td>
-          {{#if thumbnail}}
-            <img src="{{thumbnail}}" width="100" alt="Thumbnail">
+          {{#if (get this "thumbnail")}}
+            <img src="{{get this "thumbnail"}}" width="100" alt="Thumbnail">
           {{else}}
             N/A
           {{/if}}

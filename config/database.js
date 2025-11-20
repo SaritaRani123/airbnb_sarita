@@ -11,7 +11,8 @@
 require("dotenv").config();
 
 module.exports = {
-  url: process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/airbnbDB',
+  // url: process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/airbnbDB',
+  url: process.env.MONGO_URI,
   port: process.env.PORT || 3000,
   env: process.env.NODE_ENV || "development"
 };
